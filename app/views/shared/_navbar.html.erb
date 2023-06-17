@@ -1,19 +1,33 @@
 <input type="checkbox" name="" id="nav_switch">
 <header class="main-header">
     <h1 class="logo">
-        <a href="#">
-            <%= image_tag 'mochi.png',size: '35x35', class: 'inline-block' %>
-        </a>
+        <%= link_to root_path do %>
+            <%= image_tag('mochi.png', size: '35x35', class: 'inline-block') %>
+        <% end %>
     </h1>
+    <div>
+        
+    </div>
     <label for="nav_switch" class="hb">
         <span></span>
         <span></span>
         <span></span>
     </label>
-    <nav class="main-nav ">
-        <a href="#">link</a>
-        <a href="#">link</a>
-        <a href="#">link</a>
-        <a href="#">link</a>
+    <nav class="main-nav">
+        <ul>
+            <li><%= link_to '關於我們' %></li>
+            <li><%= link_to '線上購物' %></li>
+            <li><%= link_to '訂購須知' %></li>
+            <li><%= link_to '查詢訂單' %></li>
+            <li>
+                <div class="flex justify-center gap-2">
+                    <div><i class="fa-brands fa-facebook fa-lg" style="color: #d14d72;"></i></div>
+                    <div><i class="fa-brands fa-square-instagram fa-lg" style="color: #d14d72;"></i></div>
+                </div>
+            </li>
+        </ul>
+        
+        
+        
     </nav>
 </header>
