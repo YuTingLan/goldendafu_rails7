@@ -13,35 +13,36 @@
                     <%= product.title %>
                 </div>
                 <div>
-                    <%= link_to edit_product_path(product.id) do %>
-                        <i class="fa-regular fa-pen-to-square fa-xl" style="color: #d14d72;"></i>
-                    <% end %>
-                    <%= link_to product_path(product.id),
-                                                        class: "icon icon-danger", 
-                                                        method: "delete", 
-                                                        data: {confirm: "確認刪除?"} do %>
-                        <i class="fa-regular fa-trash-can fa-xl" style="color: #d14d72;"></i>
-                    <% end %>
-                    <%= link_to '#' do %>
-                        <i class="fa-solid fa-cart-plus fa-xl" style="color: #d14d72;"></i>
+                    <% if current_user.role == 0 %>
+                        <%= link_to edit_product_path(product.id) do %>
+                            <i class="fa-regular fa-pen-to-square fa-xl" style="color: #d14d72;"></i>
+                        <% end %>
+                        <%= link_to product_path(product.id),
+                                                            class: "icon icon-danger", 
+                                                            method: "delete", 
+                                                            data: {confirm: "確認刪除?"} do %>
+                            <i class="fa-regular fa-trash-can fa-xl" style="color: #d14d72;"></i>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
-            <div><img src="https://fakeimg.pl/350x200/ff0000,128/000,255"></div>
-            <div>成分：<%= product.description %></div>
-            <div class="drop">
-                <div class="dropOption">
-                <span>請選擇內餡</span>
-                </div>
-                <ul class="dropdown">
-                    <li>紅豆</li>
-                    <li>芋頭</li>
-                </ul>
-            </div>
+            <div class="w-full"><img src="https://fakeimg.pl/350x200/ff0000,128/000,255" class="w-full h-full object-fit"></div>
+            <div class="w-full">成分：<%= product.description %></div>
+
+            <% if product.title == '草莓大福'||  product.title == '原味乳酪'||  product.title == '抹茶乳酪' %>
+                <%=  form_for(@product) do |f| %>
+                    <%= f.label :filling, "請選擇內餡" %>
+                    <%= f.select :filling, options_for_select([['紅豆', '紅豆'], ['芋頭', '芋頭']]) %>
+                <% end %>
+            <% end %> 
+            
             <div class="grid w-full grid-cols-3 gap-4">
-                <span class="p-2 text-center text-[#d14d72] hollow_btn hover:solid_btn">單顆</span>
-                <span class="p-2 text-center text-[#d14d72] hollow_btn hover:solid_btn">6入/盒</span>
-                <span class="p-2 text-center text-[#d14d72] hollow_btn hover:solid_btn">9入/盒</span>
+                <span class="p-2 text-center text-[#d14d72] hollow_btn hover:solid_btn cursor-pointer">單顆</span>
+                <span class="p-2 text-center text-[#d14d72] hollow_btn hover:solid_btn cursor-pointer">6入/盒</span>
+                <span class="p-2 text-center text-[#d14d72] hollow_btn hover:solid_btn cursor-pointer">9入/盒</span>
+            </div>
+            <div class="grid w-full grid-cols-1 gap-4">
+                <span class="p-2 text-center text-[#fff] solid_btn hover:bg-[#b83d5c] cursor-pointer">加入購物車</span>
             </div>
         </div>
     </section>
