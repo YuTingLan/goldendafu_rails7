@@ -10,15 +10,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :gender
       t.string :avatar_url
       t.string :provider
-      t.string :role, default: 1   # {0:admin, 1:user}
+      t.integer :role, default: 1   # {0:admin, 1:user}
       t.string :email,              null: false, default: "", unique: true
       t.string :encrypted_password, null: false, default: ""
 
-      ## Recoverable
+      # 重設密碼
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      ## Rememberable
+      # 記住我
       t.datetime :remember_created_at
 
       ## Trackable

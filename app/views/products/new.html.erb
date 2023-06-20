@@ -1,2 +1,36 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<%=  form_for(@product) do |form| %>
+    <section class="relative flex justify-center p-5 m-10 hollow_btn">
+        <%= link_to root_path do %>
+            <div class="absolute right-2 top-2">
+                    <i class="fa-solid fa-xmark fa-2xl" style="color: #d14d72;"></i>
+            </div>
+        <% end %> 
+        
+        <section class="mt-8">
+            <div class="pb-2 text-[#d14d72]">
+                <span class="mr-2 border-b-8 border-yellow-200 "><%=  form.label :title, "商品品名"%></span>
+                <%=  form.text_field :title, class: "hollow_btn"%>
+            </div>
+            <div class="pb-2 text-[#d14d72]">
+                <span class="mr-2 border-b-8 border-yellow-200"><%=  form.label :price, "商品售價"%></span>
+                <%=  form.text_field :price, class: "hollow_btn"%>
+            </div>
+            <div class="pb-2 text-[#d14d72]">
+                <span class="mr-2 border-b-8 border-yellow-200"><%=  form.label :description, "商品成分"%></span>
+                <%=  form.text_field :description, class: "hollow_btn"%>
+            </div>
+            <div class="pb-2 text-[#d14d72]">
+                <span class="mr-2 border-b-8 border-yellow-200"><%=  form.label :inventory_quantity, "庫存數量"%></span>
+                <%=  form.text_field :inventory_quantity, class: "hollow_btn"%>
+
+            </div>
+            <div class="pb-2 text-[#d14d72]">
+                <span class="mr-2 border-b-8 border-yellow-200"><%=  form.label :image, "上傳照片"%></span>
+                <%=  form.text_field :image, class: "hollow_btn"%>
+            </div>
+            <div class="flex justify-center w-full my-4 solid_btn">
+                <%=  form.submit "確認新增"%>
+            </div>
+        </section>
+    </section>
+<% end %>
