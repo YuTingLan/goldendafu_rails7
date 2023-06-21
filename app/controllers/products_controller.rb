@@ -18,12 +18,12 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
-  
+
   def create
     @product = Product.new(product_params)
-    
+
     if @product.save
-      redirect_to '/products', notice: "品項新增成功"
+      redirect_to '/products', notice: '品項新增成功'
     else
       render :new
     end
@@ -35,15 +35,15 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-        redirect_to product_path(@product), notice: '已更新成功'
+      redirect_to product_path(@product), notice: '已更新成功'
     else
-        render :edit
+      render :edit
     end
   end
 
   def destroy
     @product.destroy
-    redirect_to products_path, notice: '已成功刪除' 
+    redirect_to products_path, notice: '已成功刪除'
   end
 
   private
@@ -53,7 +53,6 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    @product =  Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
-
 end

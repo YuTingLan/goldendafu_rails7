@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="flex items-center justify-center w-full h-screen">
+  <div class="relative flex items-center justify-center p-4 bg-white rounded-lg shadow-lg form-box shadow-gary-500/50">
+    <%= link_to  root_path do %>
+      <span class="absolute right-3 top-3"><i class="fa-solid fa-xmark fa-2xl" style="color: #d14d72;"></i></span>  
+    <% end %>
+    <div class="form-value">
+      <span class="flex justify-center mb-6 text-2xl font-bold">註冊會員</span>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="relative m-2 field">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "請輸入您的暱稱...", class: "rounded-lg w-full inline-block"%>
+          </div>
+          <hr>
+          <div class="relative m-2 field">
+            <span class="absolute top-2 right-2">
+              <i class=" fa-xl fa-regular fa-envelope" style="color: #d14d72;"></i>
+            </span>   
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "請輸入信箱帳號...", class: "rounded-lg w-full inline-block"%>
+          </div>
+          <div class="relative m-2 field">
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入密碼...(最少6個字)", class: "rounded-lg text-black w-full" %>
+          </div>
+          <div class="relative m-2 field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "再次確認密碼...", class: "rounded-lg text-black w-full" %>
+          </div>
+          
+          <div class="m-2 field">
+            <%= f.submit "確定註冊", class: "btn-square btn-pink " %>
+          </div>
+          <div class="m-2 field">
+            <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "我要註冊", new_registration_path(resource_name),class: "btn-square btn-pink" %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
